@@ -2,7 +2,7 @@
   "name": "fkn_lern_app",
   "version": "1.0.4",
   "engines": {
-    "yarn": "1.22.17"
+    "yarn": "1.22.19"
   },
   "scripts": {
     "start": "expo start --dev-client",
@@ -27,7 +27,6 @@
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/native-stack": "^6.9.12",
     "@types/cheerio": "^0.22.31",
-    "@types/dom-parser": "^0.1.1",
     "@types/node": "^18.15.11",
     "expo": "^48.0.9",
     "expo-asset": "~8.9.1",
@@ -51,16 +50,24 @@
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@babel/preset-env": "^7.1.6",
+    "@expo/config-plugins": "~6.0.0",
+    "@expo/prebuild-config": "~6.0.0",
     "@expo/webpack-config": "^18.0.2",
     "@types/react": "~18.0.31",
     "@types/react-native": "~0.71.5",
     "eas-cli": "^3.8.1",
     "expo-cli": "^6.3.2",
+    "expo-modules-autolinking": "~1.1.0",
     "jest": "^29.5.0",
     "jest-expo": "~48.0.2",
     "react-test-renderer": "18.2.0",
-    "sharp-cli": "^4.1.1",
+    "sharp-cli": "^2.1.0",
     "typescript": "~5.0.2"
+  },
+  "resolutions": {
+    "@expo/config-plugins": "~6.0.0",
+    "@expo/prebuild-config": "~6.0.0",
+    "expo-modules-autolinking": "~1.1.0"
   },
   "private": true
 }

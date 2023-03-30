@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import {
-  ScrollView, StyleSheet, Text, View, Button
+  ScrollView, StyleSheet, Text, View, Button, TouchableOpacity
 } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -298,12 +298,12 @@ function FragenkatalogScreen({ route, navigation }: { route: any, navigation: an
   }, [it]);
 
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }} onTouchStart={tapOnScreen}>
+    <TouchableOpacity style={{ flex: 1, alignItems: "center", justifyContent: "center" }} onPress={tapOnScreen}>
       <Text style={styles.headline}>Frage {it + 1}:</Text>
       <Text style={styles.text}>{stateQuestion}</Text>
       <Text style={styles.headline}>Antwort:</Text>
       <Text style={styles.text}>{stateAnswer}</Text>
-    </View>
+    </TouchableOpacity>
   );
 }
 

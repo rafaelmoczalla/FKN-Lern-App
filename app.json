@@ -19,20 +19,27 @@
       "**/*"
     ],
     "ios": {
-      "bundleIdentifier": "com.moczalla.fknLernApp",
+      "bundleIdentifier": "com.moczalla.fknlernapp",
       "supportsTablet": true
     },
     "android": {
       "versionCode": 5,
-      "package": "com.moczalla.fknLernApp",
+      "package": "com.moczalla.fknlernapp",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon-foreground.png",
         "backgroundImage": "./assets/images/adaptive-icon-background.png"
       },
-      "permissions": [ "INTERNET" ]
+      "permissions": [
+        "INTERNET"
+      ]
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b69b7ac7-362f-40c5-b145-e4f738ef1726"
+      }
     }
   }
 }
