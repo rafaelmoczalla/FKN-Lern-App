@@ -220,7 +220,8 @@ const answers = new Map<number, string>([
   [56, "Den Verlust der zuständigen Behörde unverzüglich anzeigen."],
   [57, "a) Jeder."],
   [58, "Der Charterer darf ohne waffenrechtliche Erlaubnis die tatsächliche Gewalt über eine an Bord befindliche Signalpistole im Kaliber 4 (26,5 mm) und die dazugehörige Munition ausüben."],
-  [59, "Die Bundesanstalt für Materialforschung und -prüfung (BAM)."]
+  [59, "Die Bundesanstalt für Materialforschung und -prüfung (BAM)."],
+  [60, "..."]
 ]);
 
 function randomIdx() {
@@ -251,8 +252,7 @@ function HomeScreen({ navigation }: { navigation: any }) {
             onPress={() => {
               /* 1. Navigate to the Details route with params */
               navigation.navigate("Fragenkatalog", {
-                itemId: randomIdx(),
-                otherParam: "anything you want here",
+                itemId: randomIdx()
               });
             }}
           />
@@ -273,31 +273,36 @@ function HomeScreen({ navigation }: { navigation: any }) {
 
 function FragenkatalogScreen({ route, navigation }: { route: any, navigation: any }) {
   /* 2. Get the param */
-  const { itemId, otherParam } = route.params;
+  const { itemId } = route.params;
 
   const [it, setIt] = React.useState(itemId);
+  const [firstTap, setFirstTap] = React.useState(false);
   const [stateQuestion, setStateQuestion] = React.useState(questions.get(itemId));
-  const [stateAnswer, setStateAnswer] = React.useState(answers.get(itemId));
+  const [stateAnswer, setStateAnswer] = React.useState(answers.get(60));
 
-  function nextQuestion() {
-    setIt(randomIdx());
+  function tapOnScreen() {
+    setFirstTap(!firstTap);
   }
 
   React.useEffect(() => {
+    if (firstTap) {
+      setStateAnswer(answers.get(it));
+    } else {
+      setIt(randomIdx());
+    }
+  }, [firstTap]);
+
+  React.useEffect(() => {
     setStateQuestion(questions.get(it));
-    setStateAnswer(answers.get(it));
+    setStateAnswer(answers.get(60));
   }, [it]);
 
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }} onTouchStart={tapOnScreen}>
       <Text style={styles.headline}>Frage {it + 1}:</Text>
       <Text style={styles.text}>{stateQuestion}</Text>
       <Text style={styles.headline}>Antwort:</Text>
       <Text style={styles.text}>{stateAnswer}</Text>
-      <Text> </Text>
-      <Button title="Next Question" onPress={nextQuestion} />
-      <Text> </Text>
-      <Button title="Go to Home" onPress={() => navigation.navigate("Home")} />
     </View>
   );
 }
