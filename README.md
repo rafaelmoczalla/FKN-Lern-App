@@ -1,4 +1,4 @@
-# Berlin-Indoor-Swimming-Pool-Filter
+# FKN Lern App
 ## Local Development
 The `App.tsx` file is the main file of the app where the magic happens.
 
@@ -15,7 +15,7 @@ yarn web
 When you make any changes to the `App.tsx` the changes are applied immediately and you see them in the web broswer without rebuilding.
 
 ### Android
-Run the app by first starting an adb server on windows and connect in WSL. Afterwards you can deploy and run the app as usual. Make sure that the android smart phone is in developer mode and connected via usb. Make sure to set the `EXPO_ANDROID_KEYSTORE_PASSWORD`, `EXPO_ANDROID_KEY_PASSWORD`, `EXPO_USERNAME` and `EXPO_PASSWORD` environment variables. 
+Run the app by first starting an adb server on windows and connect in WSL. Afterwards you can deploy and run the app as usual. Make sure that the android smart phone is in developer mode and connected via usb. Make sure to set the `EXPO_ANDROID_KEYSTORE_PASSWORD`, `EXPO_ANDROID_KEY_PASSWORD`, `EXPO_USERNAME` and `EXPO_PASSWORD` environment variables.
 ```bash
 adb tcpip 5555
 adb connect [ip device]:5555
