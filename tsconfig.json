@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [
+      "es6",
+      "dom"
+    ]
+  },
+  "extends": "expo/tsconfig.base"
+}
