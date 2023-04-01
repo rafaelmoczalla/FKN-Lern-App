@@ -143,6 +143,9 @@ export function HomeScreen({ navigation }: { navigation: any }) {
             <Text style={styles.text}>
               {'\u00A9'} März 2023 Rafael Moczalla
             </Text>
+            <Text style={styles.text}>
+              Version 1.1.0
+            </Text>
           </View>
         </ScrollView>
       </SafeAreaProvider>
