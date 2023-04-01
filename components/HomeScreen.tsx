@@ -19,7 +19,7 @@ export function HomeScreen({ navigation }: { navigation: any }) {
               Fachkundenachweis (FKN) für Seenotsignalmittel
             </Text>
             <Text style={styles.text}>
-              Diese App ist ein Hilfmittel zum Vorbereiten für die Prüfung zum Fachkundenachweis (FKN) für
+              Diese App ist ein Hilfsmittel zum Vorbereiten für die Prüfung zum Fachkundenachweis (FKN) für
               Seenotsignalmittel nach dem Sprengstoffrecht gemäß § 1 Abs. 2 1. SprengV Stand 16. Juli 2021.
             </Text>
             <Text style={styles.headline}>

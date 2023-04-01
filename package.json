@@ -1,6 +1,6 @@
 {
   "name": "fkn_lern_app",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "engines": {
     "yarn": "1.22.19"
   },
@@ -14,7 +14,8 @@
     "test": "jest --watchAll",
     "build": "expo build:web",
     "clean": "expo r -c",
-    "androidSubmit": "eas build --platform android --local --output=./out/build.aab && eas submit --platform android --path=./out/build.aab",
+    "androidBuild": "eas build --platform android --local --output=./out/build.aab",
+    "androidSubmit": "eas submit --platform android --path=./out/build.aab",
     "androidAPK": "java -jar \"../bundletool-all-1.9.0.jar\" build-apks --bundle=\"./out/build.aab\" --output=\"./out/build.apks\" --ks=\"../keystore/googlePlay.keystore\" --ks-key-alias=pool-filter-upload --mode=universal"
   },
   "jest": {
