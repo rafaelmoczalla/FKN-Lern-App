@@ -68,7 +68,15 @@ export const styles = StyleSheet.create({
       textAlign: "center"
     },
     container: {
-      paddingBottom: 10
+      paddingBottom: 10,
+      flex: 1,
+      alignItems: "center",
+      justifyContent: "center"
+    },
+    touchableOpacity: {
+      flex: 1,
+      alignItems: "center",
+      justifyContent: "center"
     },
     loading: {
       position: "absolute",
@@ -80,4 +88,22 @@ export const styles = StyleSheet.create({
     scrollView: {
       paddingHorizontal: 15
     },
+    success: {
+      marginTop: 20,
+      textAlignVertical: "center",
+      alignContent: "center",
+      fontSize: 23,
+      fontWeight: "bold",
+      textAlign: "center",
+      color: "green"
+    },
+    failure: {
+      marginTop: 20,
+      textAlignVertical: "center",
+      alignContent: "center",
+      fontSize: 23,
+      fontWeight: "bold",
+      textAlign: "center",
+      color: "red"
+    }
   });

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
+import { ScrollView, Text, View, Linking } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { ScrollView, Text, View, Pressable, Linking } from 'react-native';
 
 import { StatusBar } from 'expo-status-bar';
 

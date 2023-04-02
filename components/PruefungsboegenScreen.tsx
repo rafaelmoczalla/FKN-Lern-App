@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-import { Text, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity, Pressable } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { styles } from '../constants/Styles';
 import { questions, answers } from '../constants/QaA';
@@ -90,6 +91,7 @@ export function PruefungsboegenScreen({ route, navigation }: { route: any, navig
 
   const [endOfExam, setEndOfExam] = React.useState(false);
   const [firstTap, setFirstTap] = React.useState(false);
+  const [points, setPoints] = React.useState<number>(0);
 
   var cBogen = boegen.get(itemId);
   if (cBogen == undefined || cBogen == null)
@@ -132,16 +134,59 @@ export function PruefungsboegenScreen({ route, navigation }: { route: any, navig
     setStateAnswer(answers.get(60));
   }, [qId]);
 
-  if (endOfExam)
+  if (endOfExam && points >= 24)
     return(
-      <TouchableOpacity style={{ flex: 1, alignItems: "center", justifyContent: "center" }} onPress={tapOnScreen}>
-        <Text style={styles.headline}>Geschafft!</Text>
-        <Text style={styles.headline}>Ende des Prüfungsbogens erreicht!</Text>
-      </TouchableOpacity>
+      <SafeAreaProvider style={styles.container}>
+        <Text style={styles.headline}>{points}/30 Punkten erreicht</Text>
+        <Text style={styles.success}>Bestanden!</Text>
+      </SafeAreaProvider>
     )
+  else if (endOfExam)
+    return(
+      <SafeAreaProvider style={styles.container}>
+        <Text style={styles.headline}>{points}/30 Punkten erreicht</Text>
+        <Text style={styles.failure}>Durchgefallen</Text>
+      </SafeAreaProvider>
+    )
+  else if (firstTap)
+    return (
+      <SafeAreaProvider style={styles.container}>
+        <Text style={styles.headline}>Frage {it}/15:</Text>
+        <Text style={styles.centeredText}>{stateQuestion}</Text>
+        <Text style={styles.headline}>Antwort:</Text>
+        <Text style={styles.centeredText}>{stateAnswer}</Text>
+        <Pressable
+          style={styles.button}
+          accessibilityLabel="Kein Punkt, die Frage wurde falsch beantwortet."
+          onPress={tapOnScreen}
+        >
+          <Text style={styles.buttonText}>0 Punkte</Text>
+        </Pressable>
+        <Pressable
+          style={styles.button}
+          accessibilityLabel="Ein Punkt, die Frage wurde unvollständig aber vom Grundsatz her richtig beantwortet."
+          onPress={() => {
+            setPoints(points + 1);
+            tapOnScreen();
+          }}
+        >
+          <Text style={styles.buttonText}>1 Punkte</Text>
+        </Pressable>
+        <Pressable
+          style={styles.button}
+          accessibilityLabel="Zwei Punkte, die Frage wurde vollständig und richtig beantwortet."
+          onPress={() => {
+            setPoints(points + 2);
+            tapOnScreen();
+          }}
+        >
+          <Text style={styles.buttonText}>2 Punkte</Text>
+        </Pressable>
+      </SafeAreaProvider>
+    );
   else
     return (
-      <TouchableOpacity style={{ flex: 1, alignItems: "center", justifyContent: "center" }} onPress={tapOnScreen}>
+      <TouchableOpacity style={styles.touchableOpacity} onPress={tapOnScreen}>
         <Text style={styles.headline}>Frage {it}/15:</Text>
         <Text style={styles.centeredText}>{stateQuestion}</Text>
         <Text style={styles.headline}>Antwort:</Text>

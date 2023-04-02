@@ -33,7 +33,7 @@ export function FragenkatalogScreen({ route, navigation }: { route: any, navigat
   }, [it]);
 
   return (
-    <TouchableOpacity style={{ flex: 1, alignItems: "center", justifyContent: "center" }} onPress={tapOnScreen}>
+    <TouchableOpacity style={styles.touchableOpacity} onPress={tapOnScreen}>
       <Text style={styles.headline}>Frage {it + 1}:</Text>
       <Text style={styles.centeredText}>{stateQuestion}</Text>
       <Text style={styles.headline}>Antwort:</Text>
