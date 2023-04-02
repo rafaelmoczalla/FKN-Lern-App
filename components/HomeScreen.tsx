@@ -16,6 +16,13 @@ export function HomeScreen({ navigation }: { navigation: any }) {
       <ScrollView style={styles.scrollView}>
         <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
           <Text style={styles.headline}>
+            Fachkundenachweis (FKN) für Seenotsignalmittel
+          </Text>
+          <Text style={styles.text}>
+            Diese App ist ein Hilfsmittel zum Vorbereiten für die Prüfung zum Fachkundenachweis (FKN) für
+            Seenotsignalmittel nach dem Sprengstoffrecht gemäß § 1 Abs. 2 1. SprengV Stand 16. Juli 2021.
+          </Text>
+          <Text style={styles.headline}>
             Erste Schritte
           </Text>
           <Pressable
@@ -124,7 +131,7 @@ export function HomeScreen({ navigation }: { navigation: any }) {
             {'\u00A9'} März 2023 Rafael Moczalla
           </Text>
           <Text style={styles.centeredText}>
-            Version 1.2.2
+            Version 1.2.3
           </Text>
         </View>
       </ScrollView>

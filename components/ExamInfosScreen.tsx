@@ -15,20 +15,16 @@ export function ExamInfosScreen({ navigation }: { navigation: any }) {
       <ScrollView style={styles.scrollView}>
         <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
           <Text style={styles.headline}>
-            Fachkundenachweis (FKN) für Seenotsignalmittel
-          </Text>
-          <Text style={styles.text}>
-            Diese App ist ein Hilfsmittel zum Vorbereiten für die Prüfung zum Fachkundenachweis (FKN) für
-            Seenotsignalmittel nach dem Sprengstoffrecht gemäß § 1 Abs. 2 1. SprengV Stand 16. Juli 2021.
-          </Text>
-          <Text style={styles.headline}>
-            Prüfungsinformationen
+            Generelles
           </Text>
           <Text style={styles.text}>
             Voraussetzung für den FKN ist ein Mindestalter von 16 Jahren & der Besitz eines amtlichen
             Sportbootführerscheins oder eines sonstigen anerkannten Befähigungsnachweises zum Führen
             von Wassersportfahrzeugen.
             Grundsätzlich wird in der FKN Prüfung der Umgang mit Seenotsignalmitteln geprüft.
+          </Text>
+          <Text style={styles.headline}>
+            Theoretischer Teil
           </Text>
           <Text style={styles.text}>
             Die Prüfung für den FKN besteht aus einem theoretischen & einem praktischen Teil.
@@ -40,6 +36,9 @@ export function ExamInfosScreen({ navigation }: { navigation: any }) {
             Mit 23 oder weniger Punkten wird die Prüfung mit durchgefallen bewertet.
             In dieser App sind alle Fragen aus dem Fragenkatalog sowie die vier möglichen Fragenbögen
             enthalten & können zu Übungszwecken verwendet werden.
+          </Text>
+          <Text style={styles.headline}>
+            Praktischer Teil
           </Text>
           <Text style={styles.text}>
             Der abschließende praktische Teil prüft den sicheren ausgeführten Umgang mit Seenotsignalmitteln.
