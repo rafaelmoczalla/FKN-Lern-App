@@ -56,7 +56,7 @@ export const questions = new Map<number, string>([
   [52, "Welche pyrotechnischen Signalmittel unterliegen dem Sprengstoffgesetz?\na) Handfackeln und Rauchkörper.\nb) Handsignalraketen mit Fallschirm.\nc) Blitz-Knall-Patronen im Kaliber 4."],
   [53, "Dürfen Sie Seenotsignalmittel in öffentlichen Verkehrsmitteln befördern?"],
   [54, "Wem dürfen Sie Seenotsignale dauerhaft überlassen?"],
-  [55, "Wem dürfen Sie ohne Erlaubnis die Signalpistole im Kaliber 4 (26,5 mm) nebst Munition vorübergehend über-lassen?\na) Volljährigen Personen meines Vertrauens zur sicheren Aufbewahrung.\nb) Polizeibeamten (nicht dienstlich tätig).\nc) Charterern von seegehenden Wasserfahrzeugen, sofern der Besitz über die Waffe nach meinen Weisungen erfolgt."],
+  [55, "Wem dürfen Sie ohne Erlaubnis die Signalpistole im Kaliber 4 (26,5 mm) nebst Munition vorübergehend überlassen?\na) Volljährigen Personen meines Vertrauens zur sicheren Aufbewahrung.\nb) Polizeibeamten (nicht dienstlich tätig).\nc) Charterern von seegehenden Wasserfahrzeugen, sofern der Besitz über die Waffe nach meinen Weisungen erfolgt."],
   [56, "Was müssen Sie tun, wenn Ihnen Signalmittel oder Waffen abhanden kommen?"],
   [57, "Wer darf in Seenotfällen mit einer Signalwaffe schießen?\na) Jeder.\nb) Nur Inhaber einer Waffensachkundeprüfung.\nc) Nur der verantwortliche Führer des betroffenen Wasserfahrzeuges."],
   [58, "Welche Ausnahme von den waffenrechtlichen Erlaubnispflichten für Waffen und Munition betrifft den Charterer einer seegehenden Yacht?"],
