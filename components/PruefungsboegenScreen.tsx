@@ -86,7 +86,6 @@ const boegen = new Map<number, Map<number, number>>([
 ]);
 
 export function PruefungsboegenScreen({ route, navigation }: { route: any, navigation: any }) {
-  /* 2. Get the param */
   const { itemId } = route.params;
 
   const [endOfExam, setEndOfExam] = React.useState(false);
@@ -110,14 +109,14 @@ export function PruefungsboegenScreen({ route, navigation }: { route: any, navig
   const [stateAnswer, setStateAnswer] = React.useState(answers.get(60));
 
   function tapOnScreen() {
-    if (!endOfExam && it >= bogen0.size && !firstTap)
+    if (!endOfExam && it >= bogen0.size && firstTap)
       setEndOfExam(true);
 
     setFirstTap(!firstTap);
   }
 
   React.useEffect(() => {
-    if (firstTap && it < bogen0.size) {
+    if (firstTap && it <= bogen0.size) {
       setStateAnswer(answers.get(qId));
     } else if (it < bogen0.size) {
       var cQId = bogen.get(it);

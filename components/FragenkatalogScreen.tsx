@@ -8,7 +8,6 @@ import { questions, answers } from '../constants/QaA';
 
 
 export function FragenkatalogScreen({ route, navigation }: { route: any, navigation: any }) {
-  /* 2. Get the param */
   const { itemId } = route.params;
 
   const [firstTap, setFirstTap] = React.useState(false);
