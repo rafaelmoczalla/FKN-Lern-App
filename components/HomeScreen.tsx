@@ -1,12 +1,12 @@
-import * as React from 'react';
+import * as React from "react";
 
-import { ScrollView, Text, View, Pressable } from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { ScrollView, Text, View, Pressable } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
-import { StatusBar } from 'expo-status-bar';
+import { StatusBar } from "expo-status-bar";
 
-import { randomIdx } from './Tools';
-import { styles } from '../constants/Styles';
+import { randomIdx } from "./Tools";
+import { styles } from "../constants/Styles";
 
 
 export function HomeScreen({ navigation }: { navigation: any }) {
@@ -114,6 +114,23 @@ export function HomeScreen({ navigation }: { navigation: any }) {
             <Text style={styles.buttonText}>Prüfungsbogen FKN 004</Text>
           </Pressable>
           <Text style={styles.headline}>
+            Verlauf
+          </Text>
+          <Text style={styles.text}>
+            Übersicht der bisherigen Übungen.
+          </Text>
+          <Pressable
+            style={styles.button}
+            accessibilityLabel="Verlauf der Prüfungssimulationen & Histogram der bearbeiteten Fragen aus dem Fragenkatalog."
+            onPress={() => {
+              navigation.navigate("Statistik", {
+                itemId: randomIdx()
+              });
+            }}
+          >
+            <Text style={styles.buttonText}>Statistik</Text>
+          </Pressable>
+          <Text style={styles.headline}>
             Weitere Informationen
           </Text>
           <Pressable
@@ -128,7 +145,7 @@ export function HomeScreen({ navigation }: { navigation: any }) {
             <Text style={styles.buttonText}>Rechtliche Hinweise</Text>
           </Pressable>
           <Text style={styles.centeredText}>
-            {'\u00A9'} März 2023 Rafael Moczalla
+            {"\u00A9"} März 2023 Rafael Moczalla
           </Text>
           <Text style={styles.centeredText}>
             Version 1.2.3

@@ -1,10 +1,11 @@
-import * as React from 'react';
+import * as React from "react";
 
-import { Text, TouchableOpacity, Pressable } from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Text, TouchableOpacity, Pressable, View } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import { styles } from '../constants/Styles';
-import { questions, answers } from '../constants/QaA';
+import { styles } from "../constants/Styles";
+import { questions, answers } from "../constants/QaA";
 
 
 const bogen0 = new Map<number, number>([
@@ -86,6 +87,13 @@ const boegen = new Map<number, Map<number, number>>([
   [3, bogen3]
 ]);
 
+const bogenCode = new Map<number, string>([
+  [0, "FKN 001"],
+  [1, "FKN 002"],
+  [2, "FKN 003"],
+  [3, "FKN 004"]
+]);
+
 export function PruefungsboegenScreen({ route, navigation }: { route: any, navigation: any }) {
   const { itemId } = route.params;
 
@@ -117,6 +125,43 @@ export function PruefungsboegenScreen({ route, navigation }: { route: any, navig
     setFirstTap(!firstTap);
   }
 
+  const storeExamResult = async (bogen: string, endPoints: number, success: string) => {
+    console.log("store");
+    try {
+      var examsArray: string[][];
+
+      const dateObj = new Date();
+      const month = dateObj.getUTCMonth() + 1;
+      const day = dateObj.getUTCDate();
+      const year = dateObj.getUTCFullYear();
+
+      const entry = [
+        year + "-" + month + "-" + day,
+        bogen,
+        JSON.stringify(endPoints) + "/30",
+        success
+      ];
+
+      const jsonExams = await AsyncStorage.getItem('@exams');
+
+      if (jsonExams !== null) {
+        examsArray = JSON.parse(jsonExams);
+        examsArray.push(entry);
+      } else {
+        examsArray = [
+          [ "Datum", "Bogen", "Punkte", "Ergebnis" ],
+          entry
+        ];
+      }
+
+      const jsonNewExams = JSON.stringify(examsArray);
+
+      await AsyncStorage.setItem('@exams', jsonNewExams);
+    } catch (e) {
+      // do nothing else
+    }
+  }
+
   React.useEffect(() => {
     if (firstTap && it <= bogen0.size) {
       setStateAnswer(answers.get(qId));
@@ -126,6 +171,19 @@ export function PruefungsboegenScreen({ route, navigation }: { route: any, navig
         cQId = 0;
       setQId(cQId);
       setIt(it + 1);
+    }
+
+    if (endOfExam) {
+      const readBogenId = bogenCode.get(itemId);
+      var bogenId = "undefined";
+
+      if (readBogenId != undefined && readBogenId != null)
+        bogenId = readBogenId;
+
+      if (points >= 24)
+        storeExamResult(bogenId, points, "Bestanden");
+      else
+        storeExamResult(bogenId, points, "Durchgefallen");
     }
   }, [firstTap]);
 
@@ -137,14 +195,14 @@ export function PruefungsboegenScreen({ route, navigation }: { route: any, navig
   if (endOfExam && points >= 24)
     return(
       <SafeAreaProvider style={styles.container}>
-        <Text style={styles.headline}>{points}/30 Punkten erreicht</Text>
+        <Text style={styles.boldText}>{points}/30 Punkten erreicht</Text>
         <Text style={styles.success}>Bestanden!</Text>
       </SafeAreaProvider>
     )
   else if (endOfExam)
     return(
       <SafeAreaProvider style={styles.container}>
-        <Text style={styles.headline}>{points}/30 Punkten erreicht</Text>
+        <Text style={styles.boldText}>{points}/30 Punkten erreicht</Text>
         <Text style={styles.failure}>Durchgefallen</Text>
       </SafeAreaProvider>
     )
@@ -155,33 +213,35 @@ export function PruefungsboegenScreen({ route, navigation }: { route: any, navig
         <Text style={styles.centeredText}>{stateQuestion}</Text>
         <Text style={styles.headline}>Antwort:</Text>
         <Text style={styles.centeredText}>{stateAnswer}</Text>
-        <Pressable
-          style={styles.button}
-          accessibilityLabel="Kein Punkt, die Frage wurde falsch beantwortet."
-          onPress={tapOnScreen}
-        >
-          <Text style={styles.buttonText}>0 Punkte</Text>
-        </Pressable>
-        <Pressable
-          style={styles.button}
-          accessibilityLabel="Ein Punkt, die Frage wurde unvollständig aber vom Grundsatz her richtig beantwortet."
-          onPress={() => {
-            setPoints(points + 1);
-            tapOnScreen();
-          }}
-        >
-          <Text style={styles.buttonText}>1 Punkte</Text>
-        </Pressable>
-        <Pressable
-          style={styles.button}
-          accessibilityLabel="Zwei Punkte, die Frage wurde vollständig und richtig beantwortet."
-          onPress={() => {
-            setPoints(points + 2);
-            tapOnScreen();
-          }}
-        >
-          <Text style={styles.buttonText}>2 Punkte</Text>
-        </Pressable>
+        <View style={{flexDirection: "row"}}>
+          <Pressable
+            style={styles.countButton}
+            accessibilityLabel="Kein Punkt, die Frage wurde falsch beantwortet."
+            onPress={tapOnScreen}
+          >
+            <Text style={styles.buttonText}>0 Punkte</Text>
+          </Pressable>
+          <Pressable
+            style={styles.countButton}
+            accessibilityLabel="Ein Punkt, die Frage wurde unvollständig aber vom Grundsatz her richtig beantwortet."
+            onPress={() => {
+              setPoints(points + 1);
+              tapOnScreen();
+            }}
+          >
+            <Text style={styles.buttonText}>1 Punkte</Text>
+          </Pressable>
+          <Pressable
+            style={styles.countButton}
+            accessibilityLabel="Zwei Punkte, die Frage wurde vollständig & richtig beantwortet."
+            onPress={() => {
+              setPoints(points + 2);
+              tapOnScreen();
+            }}
+          >
+            <Text style={styles.buttonText}>2 Punkte</Text>
+          </Pressable>
+        </View>
       </SafeAreaProvider>
     );
   else

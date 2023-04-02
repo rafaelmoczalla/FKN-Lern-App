@@ -1,11 +1,11 @@
-import * as React from 'react';
+import * as React from "react";
 
-import { ScrollView, Text, View, Linking } from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { ScrollView, Text, View, Linking } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
-import { StatusBar } from 'expo-status-bar';
+import { StatusBar } from "expo-status-bar";
 
-import { styles } from '../constants/Styles';
+import { styles } from "../constants/Styles";
 
 
 export function ExamInfosScreen({ navigation }: { navigation: any }) {

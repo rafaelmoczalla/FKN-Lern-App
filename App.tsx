@@ -7,6 +7,7 @@ import { HomeScreen } from './components/HomeScreen';
 import { ExamInfosScreen } from './components/ExamInfosScreen';
 import { FragenkatalogScreen } from './components/FragenkatalogScreen';
 import { PruefungsboegenScreen } from './components/PruefungsboegenScreen';
+import { StatisticsScreen } from './components/StatisticsScreen';
 import { AppInfosScreen } from './components/AppInfosScreen';
 
 
@@ -27,13 +28,18 @@ function App() {
           initialParams={{ itemId: 0 }}
         />
         <Stack.Screen
+          name="Fragenkatalog"
+          component={FragenkatalogScreen}
+          initialParams={{ itemId: 0 }}
+        />
+        <Stack.Screen
           name="Prüfungssimulation"
           component={PruefungsboegenScreen}
           initialParams={{ itemId: 0 }}
         />
         <Stack.Screen
-          name="Fragenkatalog"
-          component={FragenkatalogScreen}
+          name="Statistik"
+          component={StatisticsScreen}
           initialParams={{ itemId: 0 }}
         />
         <Stack.Screen

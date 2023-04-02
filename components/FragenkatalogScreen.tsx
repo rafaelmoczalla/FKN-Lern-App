@@ -1,10 +1,10 @@
-import * as React from 'react';
+import * as React from "react";
 
-import { Text, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity } from "react-native";
 
-import { randomIdx } from './Tools';
-import { styles } from '../constants/Styles';
-import { questions, answers } from '../constants/QaA';
+import { randomIdx } from "./Tools";
+import { styles } from "../constants/Styles";
+import { questions, answers } from "../constants/QaA";
 
 
 export function FragenkatalogScreen({ route, navigation }: { route: any, navigation: any }) {

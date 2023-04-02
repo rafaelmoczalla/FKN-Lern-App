@@ -33,6 +33,32 @@ export const styles = StyleSheet.create({
       fontSize: 20,
       textAlign: "justify"
     },
+    boldText: {
+      marginTop: 8,
+      textAlignVertical: "center",
+      alignContent: "center",
+      fontSize: 20,
+      fontWeight: "bold",
+      textAlign: "justify"
+    },
+    success: {
+      marginTop: 8,
+      textAlignVertical: "center",
+      alignContent: "center",
+      fontSize: 20,
+      fontWeight: "bold",
+      textAlign: "justify",
+      color: "green"
+    },
+    failure: {
+      marginTop: 8,
+      textAlignVertical: "center",
+      alignContent: "center",
+      fontSize: 20,
+      fontWeight: "bold",
+      textAlign: "justify",
+      color: "red"
+    },
     link: {
       marginTop: 8,
       textAlignVertical: "center",
@@ -63,6 +89,16 @@ export const styles = StyleSheet.create({
       fontSize: 20,
       textAlign: "center"
     },
+    countButton: {
+      flex: 1,
+      marginTop: 30,
+      margin: 10,
+      flexDirection: "row",
+      paddingVertical: 10,
+      paddingHorizontal: 20,
+      borderRadius: 8,
+      backgroundColor: "lightblue"
+    },
     dropDown: {
       borderWidth: 1,
       textAlign: "center"
@@ -88,22 +124,42 @@ export const styles = StyleSheet.create({
     scrollView: {
       paddingHorizontal: 15
     },
-    success: {
-      marginTop: 20,
-      textAlignVertical: "center",
-      alignContent: "center",
-      fontSize: 23,
-      fontWeight: "bold",
-      textAlign: "center",
-      color: "green"
+    gridContainer: {
+      flex: 1,
+      margin: margin,
+      alignItems: "center",
+      justifyContent: "center"
     },
-    failure: {
-      marginTop: 20,
+    rowStyle: {
+      flex: 1,
+      width: 480,
+      flexDirection: "row",
+      alignItems: "center",
       textAlignVertical: "center",
       alignContent: "center",
-      fontSize: 23,
-      fontWeight: "bold",
-      textAlign: "center",
-      color: "red"
+      justifyContent: "flex-start",
+      borderColor: "grey",
+      borderBottomWidth: 1
+    },
+    cellStyle: {
+      flex: 2,
+      marginBottom: 8,
+      textAlignVertical: "center",
+      alignContent: "center",
+      justifyContent: "flex-start"
+    },
+    cellStyleScore: {
+      flex: 1,
+      marginBottom: 8,
+      textAlignVertical: "center",
+      alignContent: "center",
+      justifyContent: "flex-start"
+    },
+    cellStyleResult: {
+      flex: 3,
+      marginBottom: 8,
+      textAlignVertical: "center",
+      alignContent: "center",
+      justifyContent: "flex-start"
     }
   });
