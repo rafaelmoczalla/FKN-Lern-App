@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
       fontWeight: "bold",
       textAlign: "center"
     },
-    centeredText: {
+    largeCenteredText: {
       marginTop: 8,
       textAlignVertical: "center",
       alignContent: "center",
@@ -30,10 +30,35 @@ export const styles = StyleSheet.create({
       marginTop: 8,
       textAlignVertical: "center",
       alignContent: "center",
+      fontSize: 13,
+      textAlign: "justify"
+    },
+    redText: {
+      marginTop: 8,
+      textAlignVertical: "center",
+      alignContent: "center",
+      textAlign: "justify",
+      fontSize: 13,
+      fontWeight: "bold",
+      color: "red"
+    },
+    greenText: {
+      marginTop: 8,
+      textAlignVertical: "center",
+      alignContent: "center",
+      textAlign: "justify",
+      fontSize: 13,
+      fontWeight: "bold",
+      color: "green"
+    },
+    largeText: {
+      marginTop: 8,
+      textAlignVertical: "center",
+      alignContent: "center",
       fontSize: 20,
       textAlign: "justify"
     },
-    boldText: {
+    largeBoldText: {
       marginTop: 8,
       textAlignVertical: "center",
       alignContent: "center",
@@ -41,7 +66,7 @@ export const styles = StyleSheet.create({
       fontWeight: "bold",
       textAlign: "justify"
     },
-    success: {
+    largeSuccess: {
       marginTop: 8,
       textAlignVertical: "center",
       alignContent: "center",
@@ -50,7 +75,7 @@ export const styles = StyleSheet.create({
       textAlign: "justify",
       color: "green"
     },
-    failure: {
+    largeFailure: {
       marginTop: 8,
       textAlignVertical: "center",
       alignContent: "center",
@@ -126,13 +151,12 @@ export const styles = StyleSheet.create({
     },
     gridContainer: {
       flex: 1,
-      margin: margin,
       alignItems: "center",
       justifyContent: "center"
     },
     rowStyle: {
       flex: 1,
-      width: 480,
+      width: 360,
       flexDirection: "row",
       alignItems: "center",
       textAlignVertical: "center",
@@ -142,13 +166,6 @@ export const styles = StyleSheet.create({
       borderBottomWidth: 1
     },
     cellStyle: {
-      flex: 2,
-      marginBottom: 8,
-      textAlignVertical: "center",
-      alignContent: "center",
-      justifyContent: "flex-start"
-    },
-    cellStyleScore: {
       flex: 1,
       marginBottom: 8,
       textAlignVertical: "center",
@@ -156,7 +173,7 @@ export const styles = StyleSheet.create({
       justifyContent: "flex-start"
     },
     cellStyleResult: {
-      flex: 3,
+      flex: 1,
       marginBottom: 8,
       textAlignVertical: "center",
       alignContent: "center",

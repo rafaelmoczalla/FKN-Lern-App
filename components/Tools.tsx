@@ -12,7 +12,7 @@ export function randomIdx() {
 export function Cell({ item }: { item: string }) {
   return (
     <View style={item == "Ergebnis" || item == "Bestanden" || item == "Durchgefallen" ? styles.cellStyleResult : styles.cellStyle}>
-      <Text style={item == "Bestanden" ? styles.success : item == "Durchgefallen" ? styles.failure : styles.text}>{item}</Text>
+      <Text style={item == "Bestanden" ? styles.greenText : item == "Durchgefallen" ? styles.redText : styles.text}>{item}</Text>
     </View>
   );
 }

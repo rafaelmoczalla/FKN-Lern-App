@@ -126,7 +126,6 @@ export function PruefungsboegenScreen({ route, navigation }: { route: any, navig
   }
 
   const storeExamResult = async (bogen: string, endPoints: number, success: string) => {
-    console.log("store");
     try {
       var examsArray: string[][];
 
@@ -195,24 +194,24 @@ export function PruefungsboegenScreen({ route, navigation }: { route: any, navig
   if (endOfExam && points >= 24)
     return(
       <SafeAreaProvider style={styles.container}>
-        <Text style={styles.boldText}>{points}/30 Punkten erreicht</Text>
-        <Text style={styles.success}>Bestanden!</Text>
+        <Text style={styles.largeBoldText}>{points}/30 Punkten erreicht</Text>
+        <Text style={styles.largeSuccess}>Bestanden!</Text>
       </SafeAreaProvider>
     )
   else if (endOfExam)
     return(
       <SafeAreaProvider style={styles.container}>
-        <Text style={styles.boldText}>{points}/30 Punkten erreicht</Text>
-        <Text style={styles.failure}>Durchgefallen</Text>
+        <Text style={styles.largeBoldText}>{points}/30 Punkten erreicht</Text>
+        <Text style={styles.largeFailure}>Durchgefallen</Text>
       </SafeAreaProvider>
     )
   else if (firstTap)
     return (
       <SafeAreaProvider style={styles.container}>
         <Text style={styles.headline}>Frage {it}/15:</Text>
-        <Text style={styles.centeredText}>{stateQuestion}</Text>
+        <Text style={styles.largeCenteredText}>{stateQuestion}</Text>
         <Text style={styles.headline}>Antwort:</Text>
-        <Text style={styles.centeredText}>{stateAnswer}</Text>
+        <Text style={styles.largeCenteredText}>{stateAnswer}</Text>
         <View style={{flexDirection: "row"}}>
           <Pressable
             style={styles.countButton}
@@ -248,9 +247,9 @@ export function PruefungsboegenScreen({ route, navigation }: { route: any, navig
     return (
       <TouchableOpacity style={styles.touchableOpacity} onPress={tapOnScreen}>
         <Text style={styles.headline}>Frage {it}/15:</Text>
-        <Text style={styles.centeredText}>{stateQuestion}</Text>
+        <Text style={styles.largeCenteredText}>{stateQuestion}</Text>
         <Text style={styles.headline}>Antwort:</Text>
-        <Text style={styles.centeredText}>{stateAnswer}</Text>
+        <Text style={styles.largeCenteredText}>{stateAnswer}</Text>
       </TouchableOpacity>
     );
 }

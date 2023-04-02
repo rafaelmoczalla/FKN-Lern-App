@@ -17,7 +17,7 @@ export function ExamInfosScreen({ navigation }: { navigation: any }) {
           <Text style={styles.headline}>
             Generelles
           </Text>
-          <Text style={styles.text}>
+          <Text style={styles.largeText}>
             Voraussetzung für den FKN ist ein Mindestalter von 16 Jahren & der Besitz eines amtlichen
             Sportbootführerscheins oder eines sonstigen anerkannten Befähigungsnachweises zum Führen
             von Wassersportfahrzeugen.
@@ -26,7 +26,7 @@ export function ExamInfosScreen({ navigation }: { navigation: any }) {
           <Text style={styles.headline}>
             Theoretischer Teil
           </Text>
-          <Text style={styles.text}>
+          <Text style={styles.largeText}>
             Die Prüfung für den FKN besteht aus einem theoretischen & einem praktischen Teil.
             Im theoretischen Teil muss ein Fragebogen mit 15 Fragen aus einem einheitlichen Fragenkatalog
             von 60 Fragen bearbeitet werden.
@@ -40,7 +40,7 @@ export function ExamInfosScreen({ navigation }: { navigation: any }) {
           <Text style={styles.headline}>
             Praktischer Teil
           </Text>
-          <Text style={styles.text}>
+          <Text style={styles.largeText}>
             Der abschließende praktische Teil prüft den sicheren ausgeführten Umgang mit Seenotsignalmitteln.
             Zu den Seenotsignalmitteln im praktischen Teil gehören die Fallschirm-Signalrakete (rot),
             die Rauchfackel (orange) bzw. die Handfackel (rot), das Rauchsignal (orange/Dose) &

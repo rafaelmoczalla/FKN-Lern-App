@@ -17,7 +17,7 @@ export function AppInfosScreen({ navigation }: { navigation: any }) {
           <Text style={styles.headline}>
             Gewährleistungsausschluss
           </Text>
-          <Text style={styles.text}>
+          <Text style={styles.largeText}>
             Die App wurde mit besten Gewissen entwickelt jedoch können Fehler enthalten sein.
             Damit wird die App unter Ausschluss jeglicher Gewährleistung bereitgestellt.
           </Text>
