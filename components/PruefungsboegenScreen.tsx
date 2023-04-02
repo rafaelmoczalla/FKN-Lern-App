@@ -136,17 +136,17 @@ export function PruefungsboegenScreen({ route, navigation }: { route: any, navig
   if (endOfExam)
     return(
       <TouchableOpacity style={{ flex: 1, alignItems: "center", justifyContent: "center" }} onPress={tapOnScreen}>
-        <Text style={styles.headline}>Geschaft!</Text>
+        <Text style={styles.headline}>Geschafft!</Text>
         <Text style={styles.headline}>Ende des Prüfungsbogens erreicht!</Text>
       </TouchableOpacity>
     )
   else
     return (
       <TouchableOpacity style={{ flex: 1, alignItems: "center", justifyContent: "center" }} onPress={tapOnScreen}>
-        <Text style={styles.headline}>Frage {qId + 1}:</Text>
-        <Text style={styles.text}>{stateQuestion}</Text>
+        <Text style={styles.headline}>Frage {it}/15:</Text>
+        <Text style={styles.centeredText}>{stateQuestion}</Text>
         <Text style={styles.headline}>Antwort:</Text>
-        <Text style={styles.text}>{stateAnswer}</Text>
+        <Text style={styles.centeredText}>{stateAnswer}</Text>
       </TouchableOpacity>
     );
 }
