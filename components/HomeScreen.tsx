@@ -150,7 +150,7 @@ export function HomeScreen({ navigation }: { navigation: any }) {
             {"\u00A9"} März 2023 Rafael Moczalla
           </Text>
           <Text style={styles.largeCenteredText}>
-            Version 1.3.3
+            Version 1.4.0
           </Text>
         </View>
       </ScrollView>
