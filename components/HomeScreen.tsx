@@ -119,7 +119,7 @@ export function HomeScreen({ navigation }: { navigation: any }) {
             Verlauf
           </Text>
           <Text style={styles.largeText}>
-            Übersicht der bisherigen Übungen.
+            Übersicht des bisherigen Übungsfortschritts.
           </Text>
           <Pressable
             style={styles.button}
