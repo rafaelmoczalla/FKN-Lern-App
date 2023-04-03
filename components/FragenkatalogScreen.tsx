@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Text, TouchableOpacity } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 
 import { randomIdx } from "./Tools";
 import { styles } from "../constants/Styles";
@@ -34,10 +34,12 @@ export function FragenkatalogScreen({ route, navigation }: { route: any, navigat
 
   return (
     <TouchableOpacity style={styles.touchableOpacity} onPress={tapOnScreen}>
-      <Text style={styles.headline}>Frage {it + 1}:</Text>
-      <Text style={styles.largeCenteredText}>{stateQuestion}</Text>
-      <Text style={styles.headline}>Antwort:</Text>
-      <Text style={styles.largeCenteredText}>{stateAnswer}</Text>
+      <View style={styles.qaView}>
+        <Text style={styles.headline}>Frage {it + 1}:</Text>
+        <Text style={styles.largeCenteredText}>{stateQuestion}</Text>
+        <Text style={styles.headline}>Antwort:</Text>
+        <Text style={styles.largeCenteredText}>{stateAnswer}</Text>
+      </View>
     </TouchableOpacity>
   );
 }

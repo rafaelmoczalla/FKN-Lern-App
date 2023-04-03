@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
       marginTop: 8,
       textAlignVertical: "center",
       alignContent: "center",
-      fontSize: 20,
+      fontSize: 18,
       textAlign: "center"
     },
     text: {
@@ -53,16 +53,12 @@ export const styles = StyleSheet.create({
     },
     largeText: {
       marginTop: 8,
-      textAlignVertical: "center",
-      alignContent: "center",
-      fontSize: 20,
+      fontSize: 18,
       textAlign: "justify"
     },
     largeBoldText: {
       marginTop: 8,
-      textAlignVertical: "center",
-      alignContent: "center",
-      fontSize: 20,
+      fontSize: 18,
       fontWeight: "bold",
       textAlign: "justify"
     },
@@ -70,7 +66,7 @@ export const styles = StyleSheet.create({
       marginTop: 8,
       textAlignVertical: "center",
       alignContent: "center",
-      fontSize: 20,
+      fontSize: 18,
       fontWeight: "bold",
       textAlign: "justify",
       color: "green"
@@ -79,7 +75,7 @@ export const styles = StyleSheet.create({
       marginTop: 8,
       textAlignVertical: "center",
       alignContent: "center",
-      fontSize: 20,
+      fontSize: 18,
       fontWeight: "bold",
       textAlign: "justify",
       color: "red"
@@ -88,7 +84,7 @@ export const styles = StyleSheet.create({
       marginTop: 8,
       textAlignVertical: "center",
       alignContent: "center",
-      fontSize: 20,
+      fontSize: 18,
       textAlign: "justify",
       textDecorationLine: "underline",
       color: "blue"
@@ -111,12 +107,11 @@ export const styles = StyleSheet.create({
     buttonText: {
       textAlignVertical: "center",
       alignContent: "center",
-      fontSize: 20,
+      fontSize: 18,
       textAlign: "center"
     },
     countButton: {
-      flex: 1,
-      marginTop: 30,
+      marginTop: 36,
       margin: 10,
       flexDirection: "row",
       paddingVertical: 10,
@@ -136,8 +131,22 @@ export const styles = StyleSheet.create({
     },
     touchableOpacity: {
       flex: 1,
+      alignItems: "center"
+    },
+    qaView: {
+      flex: 2,
       alignItems: "center",
-      justifyContent: "center"
+      justifyContent: "flex-start"
+    },
+    buttonRow: {
+      flex: 1,
+      alignItems: "center",
+      justifyContent: "flex-end"
+    },
+    countDownView: {
+      flex: 1,
+      justifyContent: "flex-end",
+      margin: 36
     },
     loading: {
       position: "absolute",

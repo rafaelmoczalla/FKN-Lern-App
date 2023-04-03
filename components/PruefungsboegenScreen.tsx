@@ -3,6 +3,7 @@ import * as React from "react";
 import { Text, TouchableOpacity, Pressable, View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
 
 import { styles } from "../constants/Styles";
 import { questions, answers } from "../constants/QaA";
@@ -191,65 +192,77 @@ export function PruefungsboegenScreen({ route, navigation }: { route: any, navig
     setStateAnswer(answers.get(60));
   }, [qId]);
 
-  if (endOfExam && points >= 24)
+  if (endOfExam)
     return(
       <SafeAreaProvider style={styles.container}>
         <Text style={styles.largeBoldText}>{points}/30 Punkten erreicht</Text>
-        <Text style={styles.largeSuccess}>Bestanden!</Text>
+        {points >= 24 &&
+          <Text style={styles.largeSuccess}>Bestanden!</Text>
+        }
+        {points < 24 &&
+          <Text style={styles.largeFailure}>Durchgefallen</Text>
+        }
       </SafeAreaProvider>
     )
-  else if (endOfExam)
-    return(
-      <SafeAreaProvider style={styles.container}>
-        <Text style={styles.largeBoldText}>{points}/30 Punkten erreicht</Text>
-        <Text style={styles.largeFailure}>Durchgefallen</Text>
-      </SafeAreaProvider>
-    )
-  else if (firstTap)
-    return (
-      <SafeAreaProvider style={styles.container}>
-        <Text style={styles.headline}>Frage {it}/15:</Text>
-        <Text style={styles.largeCenteredText}>{stateQuestion}</Text>
-        <Text style={styles.headline}>Antwort:</Text>
-        <Text style={styles.largeCenteredText}>{stateAnswer}</Text>
-        <View style={{flexDirection: "row"}}>
-          <Pressable
-            style={styles.countButton}
-            accessibilityLabel="Kein Punkt, die Frage wurde falsch beantwortet."
-            onPress={tapOnScreen}
-          >
-            <Text style={styles.buttonText}>0 Punkte</Text>
-          </Pressable>
-          <Pressable
-            style={styles.countButton}
-            accessibilityLabel="Ein Punkt, die Frage wurde unvollständig aber vom Grundsatz her richtig beantwortet."
-            onPress={() => {
-              setPoints(points + 1);
-              tapOnScreen();
-            }}
-          >
-            <Text style={styles.buttonText}>1 Punkte</Text>
-          </Pressable>
-          <Pressable
-            style={styles.countButton}
-            accessibilityLabel="Zwei Punkte, die Frage wurde vollständig & richtig beantwortet."
-            onPress={() => {
-              setPoints(points + 2);
-              tapOnScreen();
-            }}
-          >
-            <Text style={styles.buttonText}>2 Punkte</Text>
-          </Pressable>
-        </View>
-      </SafeAreaProvider>
-    );
   else
     return (
-      <TouchableOpacity style={styles.touchableOpacity} onPress={tapOnScreen}>
-        <Text style={styles.headline}>Frage {it}/15:</Text>
-        <Text style={styles.largeCenteredText}>{stateQuestion}</Text>
-        <Text style={styles.headline}>Antwort:</Text>
-        <Text style={styles.largeCenteredText}>{stateAnswer}</Text>
+      <TouchableOpacity style={styles.touchableOpacity} onPress={() => {if (!firstTap) tapOnScreen()}}>
+        <View style={styles.qaView}>
+          <Text style={styles.headline}>Frage {it}/15:</Text>
+          <Text style={styles.largeCenteredText}>{stateQuestion}</Text>
+          <Text style={styles.headline}>Antwort:</Text>
+          <Text style={styles.largeCenteredText}>{stateAnswer}</Text>
+        </View>
+        <View style={styles.buttonRow}>
+          {!!firstTap &&
+            <View style={{flexDirection: "row"}}>
+              <Pressable
+                style={styles.countButton}
+                accessibilityLabel="Kein Punkt, die Frage wurde falsch beantwortet."
+                onPress={tapOnScreen}
+              >
+                <Text style={styles.buttonText}>0 Punkte</Text>
+              </Pressable>
+              <Pressable
+                style={styles.countButton}
+                accessibilityLabel="Ein Punkt, die Frage wurde unvollständig aber vom Grundsatz her richtig beantwortet."
+                onPress={() => {
+                  setPoints(points + 1);
+                  tapOnScreen();
+                }}
+              >
+                <Text style={styles.buttonText}>1 Punkte</Text>
+              </Pressable>
+              <Pressable
+                style={styles.countButton}
+                accessibilityLabel="Zwei Punkte, die Frage wurde vollständig & richtig beantwortet."
+                onPress={() => {
+                  setPoints(points + 2);
+                  tapOnScreen();
+                }}
+              >
+                <Text style={styles.buttonText}>2 Punkte</Text>
+              </Pressable>
+            </View>
+          }
+        </View>
+        <View style={styles.countDownView}>
+          <CountdownCircleTimer
+            isPlaying
+            duration={1800}
+            colors={['#004777', '#F7B801', '#A30000', '#A30000']}
+            colorsTime={[7, 5, 2, 0]}
+            onComplete={() => {
+              setEndOfExam(true);
+              setIt(bogen0.size + 1);
+              setFirstTap(true);
+            }}
+          >
+            {({ remainingTime }) =>
+              <Text style={styles.largeText}>{`${Math.floor(remainingTime / 60)}:${String(remainingTime % 60).padStart(2, '0')} min`}</Text>
+            }
+          </CountdownCircleTimer>
+        </View>
       </TouchableOpacity>
     );
 }

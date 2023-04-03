@@ -14,13 +14,15 @@ export function HomeScreen({ navigation }: { navigation: any }) {
     <SafeAreaProvider style={styles.container}>
       <StatusBar hidden/>
       <ScrollView style={styles.scrollView}>
-        <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <View style={{ flex: 1, alignItems: "center" }}>
           <Text style={styles.headline}>
             Fachkundenachweis (FKN) für Seenotsignalmittel
           </Text>
           <Text style={styles.largeText}>
             Diese App ist ein Hilfsmittel zum Vorbereiten für die Prüfung zum Fachkundenachweis (FKN) für
             Seenotsignalmittel nach dem Sprengstoffrecht gemäß § 1 Abs. 2 1. SprengV Stand 16. Juli 2021.
+            Alle Informationen & der Fragenkatalog basieren auf der Prüfungsordnung FKN herausgegeben
+            durch den Deutschen Segler-Verband.
           </Text>
           <Text style={styles.headline}>
             Erste Schritte
@@ -148,7 +150,7 @@ export function HomeScreen({ navigation }: { navigation: any }) {
             {"\u00A9"} März 2023 Rafael Moczalla
           </Text>
           <Text style={styles.largeCenteredText}>
-            Version 1.3.1
+            Version 1.3.3
           </Text>
         </View>
       </ScrollView>

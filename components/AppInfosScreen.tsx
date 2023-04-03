@@ -13,7 +13,7 @@ export function AppInfosScreen({ navigation }: { navigation: any }) {
     <SafeAreaProvider style={styles.container}>
       <StatusBar hidden/>
       <ScrollView style={styles.scrollView}>
-        <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <View style={{ flex: 1 }}>
           <Text style={styles.headline}>
             Gewährleistungsausschluss
           </Text>
