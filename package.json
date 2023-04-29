@@ -1,6 +1,6 @@
 {
   "name": "fkn_lern_app",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "engines": {
     "yarn": "1.22.19"
   },

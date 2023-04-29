@@ -5,8 +5,9 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import { StatusBar } from "expo-status-bar";
 
-import { randomIdx } from "./Tools";
+import { randomNumber } from "./Tools";
 import { styles } from "../constants/Styles";
+import { answers } from "../constants/QaA";
 
 
 export function HomeScreen({ navigation }: { navigation: any }) {
@@ -32,7 +33,7 @@ export function HomeScreen({ navigation }: { navigation: any }) {
             accessibilityLabel="Generelle Prüfungsinformationen"
             onPress={() => {
               navigation.navigate("Prüfungsinformationen", {
-                itemId: randomIdx()
+                itemId: randomNumber(answers.size)
               });
             }}
           >
@@ -52,7 +53,7 @@ export function HomeScreen({ navigation }: { navigation: any }) {
             accessibilityLabel="Zufällige Folge von Fragen aus dem Fragenkatalog."
             onPress={() => {
               navigation.navigate("Fragenkatalog", {
-                itemId: randomIdx()
+                itemId: randomNumber(answers.size)
               });
             }}
           >
@@ -126,7 +127,7 @@ export function HomeScreen({ navigation }: { navigation: any }) {
             accessibilityLabel="Verlauf der Prüfungssimulationen & Histogram der bearbeiteten Fragen aus dem Fragenkatalog."
             onPress={() => {
               navigation.navigate("Statistik", {
-                itemId: randomIdx()
+                itemId: randomNumber(answers.size)
               });
             }}
           >
@@ -140,7 +141,7 @@ export function HomeScreen({ navigation }: { navigation: any }) {
             accessibilityLabel="Rechtliche Hinweise wie Gewährleistungsausschluss etc."
             onPress={() => {
               navigation.navigate("Rechtliche Hinweise", {
-                itemId: randomIdx()
+                itemId: randomNumber(answers.size)
               });
             }}
           >
@@ -150,7 +151,7 @@ export function HomeScreen({ navigation }: { navigation: any }) {
             {"\u00A9"} März 2023 Rafael Moczalla
           </Text>
           <Text style={styles.largeCenteredText}>
-            Version 1.4.0
+            Version 1.4.1
           </Text>
         </View>
       </ScrollView>

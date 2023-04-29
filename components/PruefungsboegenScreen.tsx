@@ -5,6 +5,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
 
+import { randomNumber } from "./Tools";
 import { styles } from "../constants/Styles";
 import { questions, answers } from "../constants/QaA";
 
@@ -96,29 +97,52 @@ const bogenCode = new Map<number, string>([
 ]);
 
 export function PruefungsboegenScreen({ route, navigation }: { route: any, navigation: any }) {
-  const { itemId } = route.params;
-
+  const [itemId, setItemId] = React.useState(route.params.itemId);
   const [endOfExam, setEndOfExam] = React.useState(false);
   const [firstTap, setFirstTap] = React.useState(false);
   const [points, setPoints] = React.useState<number>(0);
-
-  var cBogen = boegen.get(itemId);
-  if (cBogen == undefined || cBogen == null)
-    cBogen = bogen0;
-
-  const [bogen, setBogen] = React.useState<Map<number, number>>(cBogen);
-
+  const [bogen, setBogen] = React.useState<Map<number, number>>(new Map(bogen0));
   const [it, setIt] = React.useState<number>(0);
-
-  var cQId = cBogen.get(it);
-  if (cQId == undefined || cQId == null)
-  cQId = 0;
-
-  const [qId, setQId] = React.useState<number>(cQId);
-
-  const [stateQuestion, setStateQuestion] = React.useState(questions.get(qId));
+  const [qId, setQId] = React.useState<number>(0);
+  const [stateQuestion, setStateQuestion] = React.useState(questions.get(0));
   const [stateAnswer, setStateAnswer] = React.useState(answers.get(60));
 
+  // Shuffle bogen
+  React.useEffect(() => {
+    var iterableBogen = boegen.get(itemId);
+
+    var selBogen;
+
+    if (iterableBogen == undefined || iterableBogen == null)
+      selBogen = new Array();
+    else if (iterableBogen.values() == undefined || iterableBogen.values() == null)
+      selBogen = new Array();
+    else
+      selBogen = Array.from(iterableBogen.values());
+
+    for (var i = 0; i < bogen0.size; i++) {
+      var rand = randomNumber(selBogen.length - 1);
+      var selected = selBogen.at(rand);
+
+      if (selected == undefined || selected == null)
+        selected = i;
+
+      bogen.set(i, selected);
+      selBogen.splice(rand, 1);
+    }
+
+    console.log("bogen: ", bogen);
+
+    var cQId = bogen.get(it);
+    if (cQId == undefined || cQId == null)
+      cQId = 0;
+
+    setQId(cQId);
+    setStateQuestion(questions.get(qId));
+    setStateAnswer(answers.get(60));
+  }, []);
+
+  // When tap on screen check if exam is over
   function tapOnScreen() {
     if (!endOfExam && it >= bogen0.size && firstTap)
       setEndOfExam(true);
@@ -126,6 +150,7 @@ export function PruefungsboegenScreen({ route, navigation }: { route: any, navig
     setFirstTap(!firstTap);
   }
 
+  // Store statistic
   const storeExamResult = async (bogen: string, endPoints: number, success: string) => {
     try {
       var examsArray: string[][];
@@ -162,6 +187,7 @@ export function PruefungsboegenScreen({ route, navigation }: { route: any, navig
     }
   }
 
+  // Handle each tap on the screen
   React.useEffect(() => {
     if (firstTap && it <= bogen0.size) {
       setStateAnswer(answers.get(qId));
@@ -187,6 +213,7 @@ export function PruefungsboegenScreen({ route, navigation }: { route: any, navig
     }
   }, [firstTap]);
 
+  // Show new question & clear result
   React.useEffect(() => {
     setStateQuestion(questions.get(qId));
     setStateAnswer(answers.get(60));

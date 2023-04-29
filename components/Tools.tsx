@@ -5,8 +5,8 @@ import { Text, View } from "react-native";
 import { styles } from "../constants/Styles";
 
 
-export function randomIdx() {
-  return Math.floor(Math.random() * 100) % 60;
+export function randomNumber(max: number) {
+  return Math.floor(Math.random() * (max + 1));
 }
 
 export function Cell({ item }: { item: string }) {

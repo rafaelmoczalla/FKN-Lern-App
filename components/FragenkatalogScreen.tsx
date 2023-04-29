@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { Text, TouchableOpacity, View } from "react-native";
 
-import { randomIdx } from "./Tools";
+import { randomNumber } from "./Tools";
 import { styles } from "../constants/Styles";
 import { questions, answers } from "../constants/QaA";
 
@@ -13,7 +13,7 @@ export function FragenkatalogScreen({ route, navigation }: { route: any, navigat
   const [firstTap, setFirstTap] = React.useState(false);
   const [it, setIt] = React.useState(itemId);
   const [stateQuestion, setStateQuestion] = React.useState(questions.get(itemId));
-  const [stateAnswer, setStateAnswer] = React.useState(answers.get(60));
+  const [stateAnswer, setStateAnswer] = React.useState(answers.get(answers.size - 1));
 
   function tapOnScreen() {
     setFirstTap(!firstTap);
@@ -23,13 +23,13 @@ export function FragenkatalogScreen({ route, navigation }: { route: any, navigat
     if (firstTap) {
       setStateAnswer(answers.get(it));
     } else {
-      setIt(randomIdx());
+      setIt(randomNumber(answers.size - 1));
     }
   }, [firstTap]);
 
   React.useEffect(() => {
     setStateQuestion(questions.get(it));
-    setStateAnswer(answers.get(60));
+    setStateAnswer(answers.get(answers.size - 1));
   }, [it]);
 
   return (
