@@ -17,6 +17,15 @@ export function HomeScreen({ navigation }: { navigation: any }) {
       <ScrollView style={styles.scrollView}>
         <View style={{ flex: 1, alignItems: "center" }}>
           <Text style={styles.headline}>
+            Disclaimer
+          </Text>
+          <Text style={styles.largeText}>
+            In der letzten Anpassung des offiziellen Fragenkatalogs zum 1. April 2025 wurde ein neuer
+            Fragentyp eingeführt. Dieser fehlt in dieser App komplett. Außerdem fehle alle Anpassungen
+            des Fragenkatalogs seit März 2023. Falls genügend Leute ein Update möchten passe ich den
+            Fragenkatalog auf den neuesten Stand an.
+          </Text>
+          <Text style={styles.headline}>
             Fachkundenachweis (FKN) für Seenotsignalmittel
           </Text>
           <Text style={styles.largeText}>

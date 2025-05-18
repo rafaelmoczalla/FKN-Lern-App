@@ -2,7 +2,7 @@
   "name": "fkn_lern_app",
   "version": "1.4.1",
   "engines": {
-    "yarn": "1.22.19"
+    "yarn": "1.22.22"
   },
   "scripts": {
     "start": "expo start --dev-client",
