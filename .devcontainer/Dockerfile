@@ -30,7 +30,5 @@ RUN mkdir -p $ANDROID_HOME && cd $ANDROID_HOME && \
 
 RUN yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
 
-RUN yarn global add react-native-cli
-
 WORKDIR /workspace
 

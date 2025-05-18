@@ -119,10 +119,6 @@ export const styles = StyleSheet.create({
       borderRadius: 8,
       backgroundColor: "lightblue"
     },
-    dropDown: {
-      borderWidth: 1,
-      textAlign: "center"
-    },
     container: {
       paddingBottom: 10,
       flex: 1,
